@@ -1,0 +1,78 @@
+*, *:before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  color: white;
+}
+
+body {
+  min-height: 100vh;
+  background-image: linear-gradient(to left top, #4B6460 50%, #252525);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body::before {
+  position: absolute;
+  content: '';
+  background-image: url(images/globe.png);
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  z-index: -1;
+}
+
+@media (min-width: 800px) {
+  body::before {
+    background-position: center left;
+  }
+}
+
+main {
+  min-height: 100svh;
+  width: 90%;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.container h1 {
+  text-transform: uppercase;
+  font-size: 5.5rem;
+  max-width: min-content;
+}
+
+.slogan {
+  font-style: italic;
+  font-size: 1.3rem;
+  margin: 0 0 2em 0;
+}
+
+.description {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.survey {
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.36);
+  padding: 1.5em 3em;
+  margin: 1em 0;
+  transition: opacity ease-in-out 200ms;
+}
+
+.survey:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
