@@ -10,6 +10,21 @@
   <link rel="stylesheet" href="calculator.css">
   <title>Carbon Calculator</title>
 </head>
+
+<style>
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+</style>
+
 <body>
   <main>
     <div class="hero">
@@ -24,21 +39,19 @@
       <div class="cards">
         <img src="images/people.png" alt="">
         <h5>household</h5>
-        <p class="hint">Number of people living in the household</p>
+        <p class="hint">Number of people living in your household</p>
         <div class="input-wrapper people">
-          <input type="text">
+          <input class="cards-input" type="number" name="people">
         </div>
-        <p class="error">invalid</p>
       </div>
 
       <div class="cards light-green">
         <img src="images/electricity.png" alt="">
         <h5>electricity</h5>
-        <p class="hint electricity">Monthly reading in kilowatts</p>
+        <p class="hint electricity">Monthly reading in kilowatt-hours</p>
         <div class="input-wrapper kW">
-          <input type="text">
+          <input class="cards-input" type="number" name="electricityUsage">
         </div>
-        <p class="error">invalid</p>
       </div>
 
       <div class="cards">
@@ -46,69 +59,62 @@
         <h5>water</h5>
         <p class="hint">Monthly reading in cubic meters</p>
         <div class="input-wrapper m3">
-          <input type="text">
+          <input class="cards-input" type="number" name="waterUsage">
         </div>
-        <p class="error">invalid</p>
       </div>
 
       <div class="cards light-green">
         <img src="images/motorcycle.png" alt="">
         <h5>Motorbike</h5>
-        <p class="hint">Number of distance traveled per week in kilometers</p>
+        <p class="hint">Number of distance traveled per day in kilometers</p>
         <div class="input-wrapper km">
-          <input type="text">
+          <input class="cards-input" type="number" name="motorbikeDistance">
         </div>
-        <p class="error">invalid</p>
       </div>
-
+    
       <div class="cards">
         <img src="images/bus.png" alt="">
         <h5>public transport</h5>
-        <p class="hint">Number of distance traveled per week in kilometers</p>
+        <p class="hint">Number of distance traveled per day in kilometers</p>
         <div class="input-wrapper km">
-          <input type="text">
+          <input class="cards-input" type="number" name="publicTransportDistance">
         </div>
-        <p class="error">invalid</p>
       </div>
-
+    
       <div class="cards light-green">
         <img src="images/car.png" alt="">
         <h5>private car</h5>
-        <p class="hint">Number of distance traveled per week in kilometers</p>
+        <p class="hint">Number of distance traveled per day in kilometers</p>
         <div class="input-wrapper km">
-          <input type="text">
+          <input class="cards-input" type="number" name="carDistance">
         </div>
-        <p class="error">invalid</p>
       </div>
-
+    
       <div class="cards">
         <img src="images/trash.png" alt="">
         <h5>waste</h5>
         <p class="hint">Amount generated per week in kilograms</p>
         <div class="input-wrapper kg">
-          <input type="text">
+          <input class="cards-input" type="number" name="wasteAmount">
         </div>
-        <p class="error">invalid</p>
       </div>
-
+    
       <div class="cards light-green">
         <img src="images/utensils.png" alt="">
         <h5>Meat</h5>
         <p class="hint">Amount consumed per week in kilograms</p>
         <div class="input-wrapper kg">
-          <input type="text">
+          <input class="cards-input" type="number" name="meatConsumption">
         </div>
-        <p class="error">invalid</p>
-      </div>
+      </div>    
 
       <div class="cards">
-        <img src="images/people.png" alt="">
-        <h5>household</h5>
-        <p class="hint">Number of people living in the household</p>
-        <div class="input-wrapper">
-          <input type="text">
+        <img src="images/gas.png" alt="">
+        <h5>gas</h5>
+        <p class="hint">Amount consumed per week in kilograms</p>
+        <div class="input-wrapper kg">
+          <input class="cards-input" type="number" name="gasConsumption">
         </div>
-        <p class="error">invalid</p>
       </div>
 
     </div>
@@ -116,6 +122,51 @@
     <div class="button-container">
       <button class="submit">submit</button>
     </div>
+
   </main>
+
+  <script src="carbonCalculator.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const submitButton = document.querySelector('.submit');
+
+      submitButton.addEventListener('click', function() {
+        // Retrieve input values
+        const numHouseholds = parseInt(document.querySelector('input[name="people"]').value);
+        const electricityReading = parseFloat(document.querySelector('input[name="electricityUsage"]').value);
+        const waterReading = parseFloat(document.querySelector('input[name="waterUsage"]').value);
+        const motorbikeDistance = parseFloat(document.querySelector('input[name="motorbikeDistance"]').value);
+        const publicTransportDistance = parseFloat(document.querySelector('input[name="publicTransportDistance"]').value);
+        const carDistance = parseFloat(document.querySelector('input[name="carDistance"]').value);
+        const wasteAmount = parseFloat(document.querySelector('input[name="wasteAmount"]').value);
+        const meatConsumption = parseFloat(document.querySelector('input[name="meatConsumption"]').value);
+        const gasConsumption = parseFloat(document.querySelector('input[name="gasConsumption"]').value)
+
+        const isNotEmpty = isEmpty(numHouseholds, electricityReading, waterReading, motorbikeDistance, publicTransportDistance, carDistance, wasteAmount, meatConsumption, gasConsumption);
+
+        if (isNotEmpty) {
+          // Calculate carbon footprint
+          const electricityFootprint = calculateElectricityCarbonFootprint(numHouseholds, electricityReading);
+          const waterFootprint = calculateWaterCarbonFootprint(numHouseholds, waterReading);
+          const motorbikeFootprint = calculateMotorbikeCarbonFootprint(motorbikeDistance);
+          const publicTransportFootprint = calculatePublicTransportCarbonFootprint(publicTransportDistance);
+          const carFootprint = calculateCarCarbonFootprint(carDistance);
+          const wasteFootprint = calculateWasteCarbonFootprint(numHouseholds, wasteAmount);
+          const dietFootprint = calculateDietCarbonFootprint(meatConsumption);
+          const gasFootprint = calculateGasCarbonFootprint(gasConsumption);
+
+          // Calculate total carbon footprint
+          const totalFootprint = electricityFootprint + waterFootprint + motorbikeFootprint + publicTransportFootprint + carFootprint + wasteFootprint + dietFootprint + gasFootprint;
+          const monthlyFootprint = totalFootprint * 30;
+          const yearlyFootprint = totalFootprint * 365;
+
+          // Display total carbon footprint using alert
+          alert("Daily Carbon Footprint: " + totalFootprint.toFixed(4) + " kg CO2 per day \n" + 
+              "Monthly Carbon Footprint: " + monthlyFootprint.toFixed(4) + " kg CO2 per month \n" + 
+              "Yearly Carbon FootPrint: " + yearlyFootprint.toFixed(4) + " kg CO2 per year");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
