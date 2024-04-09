@@ -7,7 +7,7 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100svh;
   background-image: linear-gradient(to left top, #4B6460 50%, #252525);
   position: relative;
   display: flex;
