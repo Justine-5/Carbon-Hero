@@ -56,7 +56,7 @@ function isEmpty (numPerson, elecReading, h2oRead, motorDis, pubTransDis, carDis
         inputElements[i].classList.remove("error");
     }
     var result = true;
-    if (isNaN(numPerson)) {
+    if (isNaN(numPerson) || numPerson == 0) {
         inputElements[0].classList.add("error");
         result =  false;
     }

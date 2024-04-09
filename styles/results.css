@@ -1,0 +1,177 @@
+*, *:before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background-color: #233831;
+}
+
+main {
+  padding: 4em 0;
+}
+
+.container {
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto 2em;
+  border-radius: 10px;
+  padding: 3em 2em;
+  background-color: #32493C;
+}
+
+.bg {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center right;
+}
+
+.green {
+  background-image: url(../images/green.png);
+}
+
+.yellow {
+  background-image: url(../images/yellow.png);
+}
+
+.red {
+  background-image: url(../images/red.png);
+}
+
+.text-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.role {
+  color: white;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1em;
+}
+
+.description {
+  color: #f3f3f3;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 2em 0;
+}
+
+.view {
+  color: #f3f3f3;
+  font-size: .8rem;
+  font-weight: 200;
+  font-style: italic;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5em;
+}
+
+.content img {
+  background-color: #a4c787;
+  width: 100%;
+  max-width: 70px;
+  max-height: 70px;
+  padding: .2em;
+  margin: 0 1em 0 0;
+  border-radius: 10px;
+}
+
+.content img:hover {
+  cursor: pointer;
+}
+
+.progress {
+  background: #d9d9d9;
+  width: 100%;
+  height: 45px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.progress-fill {
+  background-color: #a4c787;
+  border-radius: 15px;
+  height: 100%;
+  width: 0%;
+  transition: all 1s;
+}
+
+.progress-text {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: #233831;
+  font-weight: 900;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+@media (min-width: 900px) {
+  .flex {
+    flex-direction: row;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  background: #a4c787;
+  border-radius: 10px;
+  padding: 2em;
+}
+
+.light-green {
+  background: #C8DEB7;
+}
+
+.generate {
+  color: #336058;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 0 0 1em 0;
+}
+
+.results {
+  color: #233831;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.button-container {
+  padding: 2em;
+  text-align: center;
+}
+
+.submit {
+  background: #a4c787;
+  font-size: 1.3em;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  color: white;
+  transition: opacity ease-in-out 200ms;
+}
+
+.submit:hover {
+  opacity: 80%;
+  cursor: pointer;
+}
