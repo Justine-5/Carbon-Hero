@@ -160,11 +160,19 @@
           const monthlyFootprint = totalFootprint * 30;
           const yearlyFootprint = totalFootprint * 365;
 
-          // Display total carbon footprint using alert
-          alert("Daily Carbon Footprint: " + totalFootprint.toFixed(4) + " kg CO2 per day \n" + 
-              "Monthly Carbon Footprint: " + monthlyFootprint.toFixed(4) + " kg CO2 per month \n" + 
-              "Yearly Carbon FootPrint: " + yearlyFootprint.toFixed(4) + " kg CO2 per year");
+          localStorage.setItem('daily', totalFootprint.toFixed(2));
+          localStorage.setItem('monthly', monthlyFootprint.toFixed(2));
+          localStorage.setItem('yearly', yearlyFootprint.toFixed(2));
 
+          localStorage.setItem('electricityFootprint', electricityFootprint);
+          localStorage.setItem('waterFootprint', waterFootprint);
+          localStorage.setItem('motorbikeFootprint', motorbikeFootprint);
+          localStorage.setItem('publicTransportFootprint', publicTransportFootprint);
+          localStorage.setItem('carFootprint', carFootprint);
+          localStorage.setItem('wasteFootprint', wasteFootprint);
+          localStorage.setItem('dietFootprint', dietFootprint);
+          localStorage.setItem('gasFootprint', gasFootprint);
+          
           location.href="results.html";
         }
       });

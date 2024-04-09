@@ -56,7 +56,7 @@ function isEmpty (numPerson, elecReading, h2oRead, motorDis, pubTransDis, carDis
         inputElements[i].classList.remove("error");
     }
     var result = true;
-    if (isNaN(numPerson) || numPerson == 0) {
+    if (isNaN(numPerson) || numPerson <= 0) {
         inputElements[0].classList.add("error");
         result =  false;
     }
@@ -96,14 +96,14 @@ function isEmpty (numPerson, elecReading, h2oRead, motorDis, pubTransDis, carDis
 }
 
 // Exporting functions to be used in other files if needed
-module.exports = {
-    calculateElectricityCarbonFootprint,
-    calculateWaterCarbonFootprint,
-    calculateMotorbikeCarbonFootprint,
-    calculatePublicTransportCarbonFootprint,
-    calculateCarCarbonFootprint,
-    calculateWasteCarbonFootprint,
-    calculateDietCarbonFootprint,
-    calculateGasCarbonFootprint,
-    isEmpty
-};
+// module.exports = {
+//     calculateElectricityCarbonFootprint,
+//     calculateWaterCarbonFootprint,
+//     calculateMotorbikeCarbonFootprint,
+//     calculatePublicTransportCarbonFootprint,
+//     calculateCarCarbonFootprint,
+//     calculateWasteCarbonFootprint,
+//     calculateDietCarbonFootprint,
+//     calculateGasCarbonFootprint,
+//     isEmpty
+// };
