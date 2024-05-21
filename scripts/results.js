@@ -43,7 +43,7 @@ bg = document.querySelector(".bg");
 if (daily <= 5){
     bg.classList.add("green")
 }
-else if (daily > 5 && daily < 10){
+else if (daily > 5 && daily < 15){
     bg.classList.add("yellow")
 
     const yelloww = document.getElementById("herodaw");
